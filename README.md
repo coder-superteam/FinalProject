@@ -20,7 +20,7 @@
 ### Translate
 * [ ] Integrate GG Translate, automatically translate user's sentences
 
-###Practice
+### Practice
 * [ ] Chatbot, practice english
 
 ### Points
@@ -41,7 +41,7 @@
 * [ ] Users can create chat rooms
 * [ ] Users can comment on others answer
 
-##Bonus features
+## Bonus features
 
 ### Practice
 

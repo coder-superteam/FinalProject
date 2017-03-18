@@ -11,13 +11,14 @@
 
 ### Posts
 
-* [ ] Everyone should be able to search an English sentence and see results
+* [ ] Everyone should be able to search an English sentence and see results.
 * [ ] Search results are sorted based on total vote, time
 * [ ] users can filter search results
 * [ ] If there's no relative results, allow users to post new topic
 * [ ] Top posts of week, month, year
 
 ### Translate
+* [ ] Users add context tags when they post
 * [ ] Integrate GG Translate, automatically translate user's sentences
 
 ### Practice

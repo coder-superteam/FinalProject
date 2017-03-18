@@ -3,7 +3,7 @@
 **Victory English** is a Ruby on Rails application that allows users to translate from English to Vietnamese with help from others.
 
 - Submitted by: **PowerTeam**
-- Time spent: **2** hours
+- Time spent: **19** hours
 - URL: **Insert your Heroku URL here**
 - SimpleCov Test Coverage: [coverage/index.html](coverage/index.html)
 

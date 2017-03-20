@@ -55,3 +55,5 @@ gem 'devise'
 group :development do
   gem "rails-erd"
 end
+
+gem 'bootstrap', '~> 4.0.0.alpha6'

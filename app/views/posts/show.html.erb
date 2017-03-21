@@ -1,0 +1,46 @@
+<div class="card">
+  <div class="card-block">
+    <h4 class="card-title"> <%= @post.title %> </h4>
+    <h6 class="card-subtitle mb-2 text-muted"><%= @post.user.email %></h6>
+    <p class="card-text"> <%= @post.body %> </p>
+		<div class="card-footer text-muted">
+    	<%= @post.created_at %>
+  	</div>
+  </div>
+	
+
+	<% if @post.replies.count() == 0 %>
+		<h5>don't have reply yet</h5>
+	<% else %>
+		<h5> <%= @post.replies.count() %> Replies </h5>
+		<% @post.replies.each do |reply| %>
+
+			<div class="card-block">
+		    <h6 class="card-subtitle mb-2 text-muted"><%= reply.user.email %></h6>
+		    <p class="card-text"> <%= reply.body %> </p>
+				<div class="card-footer text-muted">
+		    	<%= reply.created_at %>
+		  	</div>
+		  </div>
+
+		<% end %>
+	<% end %>
+</div>
+
+<%= form_for [@post, @reply] do |f| %>
+	<% if @reply.errors.size > 0 %>
+    <div class="alert alert-danger">
+      <%= @reply.errors.full_messages.to_sentence %>
+    </div>
+  <% end %>
+  <div class="form-group">
+    <div>
+      <%= f.label :"Your Answer" %>
+      <%= f.text_area :body, class: "form-control"%>
+    </div>
+  </div>
+  <%= f.submit "Post your answer", class: "btn btn-primary" %>
+<% end %>
+
+
+

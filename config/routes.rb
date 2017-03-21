@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  
+	resources :posts do
+  	resources :replies
+  end
   root 'home#index'
 
   devise_for :users

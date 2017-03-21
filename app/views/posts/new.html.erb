@@ -1,0 +1,25 @@
+<h1>Create new post</h1>
+
+<%= form_for @post do |f| %>
+  <% if @post.errors.size > 0 %>
+    <div class="alert alert-danger">
+      <%= @post.errors.full_messages.to_sentence %>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <div>
+      <%= f.label :title %>
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
+    <div>
+      <%= f.label :language %>
+      <%= f.text_field :language, class: "form-control" %>
+    </div>
+    <div>
+      <%= f.label :body %>
+      <%= f.text_area :body, class: "form-control" %>
+    </div>
+  </div>
+  <%= f.submit class: "btn btn-secondary" %>
+<% end %>

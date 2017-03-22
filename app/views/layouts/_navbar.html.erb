@@ -11,6 +11,7 @@
     <div class="navbar-collapse collapse navbar-responsive-collapse">
       <ul class="nav navbar-nav">
         <li><%= link_to "Ask question", new_post_path%></li>
+        <%= link_to "Chat", rooms_path, :class => 'nav-link'  %>
         <li class=""><a href="javascript:void(0)">Active</a></li>
         <li><a href="javascript:void(0)">Link</a></li>
         <li class="dropdown">
@@ -27,6 +28,7 @@
             <li><a href="javascript:void(0)">One more separated link</a></li>
           </ul>
         </li>
+
       </ul>
 
       <ul class="nav navbar-nav navbar-right">

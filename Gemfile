@@ -56,4 +56,14 @@ group :development do
   gem "rails-erd"
 end
 
-gem 'bootstrap', '~> 4.0.0.alpha6'
+gem "omniauth-facebook"
+# gem 'materialize-sass'
+# gem 'bootstrap', '~> 4.0.0.alpha6'
+gem 'bootstrap-sass'
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.3.3'
+end
+gem 'bootstrap-material-design'
+gem 'toastr_rails'
+gem 'paperclip', '~> 4.1'
+

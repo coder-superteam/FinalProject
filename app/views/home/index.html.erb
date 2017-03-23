@@ -1,2 +1,7 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<%= form_tag(posts_path, :method => "get", class: " my-12 my-lg-0") do %>
+    <div class="text-center">
+      <%= text_field_tag :search, params[:search], placeholder: "Search", class: 'form-control' %>
+      <%= submit_tag "Search", class: 'btn btn-success' %>
+    </div>
+
+<% end %>

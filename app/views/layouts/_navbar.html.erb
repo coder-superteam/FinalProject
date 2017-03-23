@@ -1,55 +1,63 @@
-<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <a class="navbar-brand" href="#">Navbar</a>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item active">
-          <%= link_to "Ask question", new_post_path, :class => 'nav-link'  %>
-        </li>
-      <% if !user_signed_in? %>
-        <li class="nav-item active">
-          <%= link_to "Sign up", new_user_registration_path, :class => 'nav-link'  %>
-        </li>
-        <li class="nav-item active">
-          <%= link_to "Login", new_user_session_path, :class => 'nav-link'  %>
-        </li>
-      <% end %>
-    </ul>
-    <!-- <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form> -->
-    <div>
-      
+<div class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="<%= root_path %>">TRANSLATE ME</a>
     </div>
-    <%= form_tag(posts_path, :method => "get", class: "form-inline my-2 my-lg-0") do %>
-      <%= text_field_tag :search, params[:search], placeholder: "Search", class: 'form-control mr-sm-2' %>
-      <%= submit_tag "Search", class: 'btn btn-outline-success my-2 my-sm-0' %>
-    <% end %>
-    <% if user_signed_in? %>
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-          <strong><%= current_user.email %></strong>
-        </li>
-        <li class="nav-item active">
-          <%= link_to 'Edit profile', edit_user_registration_path, :class => 'nav-link' %> 
-        </li>
-        <li class="nav-item active">
-          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'nav-link' %>
+    <div class="navbar-collapse collapse navbar-responsive-collapse">
+      <ul class="nav navbar-nav">
+        <li><%= link_to "Ask question", new_post_path%></li>
+        <li class=""><a href="javascript:void(0)">Active</a></li>
+        <li><a href="javascript:void(0)">Link</a></li>
+        <li class="dropdown">
+          <a href="http://fezvrasta.github.io/bootstrap-material-design/bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown
+            <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="javascript:void(0)">Action</a></li>
+            <li><a href="javascript:void(0)">Another action</a></li>
+            <li><a href="javascript:void(0)">Something else here</a></li>
+
+            <li class="divider"></li>
+            <li class="dropdown-header">Dropdown header</li>
+            <li><a href="javascript:void(0)">Separated link</a></li>
+            <li><a href="javascript:void(0)">One more separated link</a></li>
+          </ul>
         </li>
       </ul>
-    <% end %>
-        
-    
+
+      <ul class="nav navbar-nav navbar-right">
+
+
+        <% if user_signed_in? %>
+            <li><%= link_to 'Profile', edit_user_registration_path %></li>
+            <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+            <li class="avatar"><%= image_tag(current_user.avatar.url(:thumb), width: '50px') %></li>
+        <% else %>
+            <li class="nav-item  ">
+              <%= link_to "Sign up", new_user_registration_path, :class => 'nav-link' %>
+            </li>
+            <li class="nav-item ">
+              <%= link_to "Login", new_user_session_path, :class => 'nav-link' %>
+            </li>
+        <% end %>
+
+      </ul>
+    </div>
   </div>
+</div>
 
+<script type="text/javascript" charset="utf-8">
 
-  
-
-</nav>
+    $(function() {
+        $("li").click(function() {
+            // remove classes from all
+            $("li").removeClass("active");
+            // add class to the one we clicked
+            $(this).addClass("active");
+        });
+    });
+</script>

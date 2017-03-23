@@ -1,0 +1,26 @@
+<div class="container-fluid" style="padding-right: 20%; padding-left: 20%;">
+	<div class="card card-block">
+		<% if @messages.size > 0 %>
+			<ul class="list-group">
+				<% @messages.each do |message| %>
+				<li class="list-group-item">
+					<%= label_tag nil, message.user.name, class: "badge badge-primary mr-sm-2" %>
+					<%= message.body %>
+					</li>
+				<% end %>
+			</ul>
+		<% else %>
+			<h4>No message</h4>
+		<% end %>
+
+
+		<%= form_for [@room, Message.new] do |f| %>
+		<div class="input-group" style="margin-top: 10%">
+			<%= f.text_field :body, {class: 'form-control', placeholder: 'Enter your message'} %>
+			<span class="input-group-btn">
+				<%= f.submit nil, class: 'btn btn-primary'%>
+			</span>
+		</div>
+		<% end %>
+	</div>
+</div>

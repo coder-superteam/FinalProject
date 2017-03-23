@@ -34,4 +34,5 @@ class User < ApplicationRecord
 
   def name_or_default
     name || email.split('@')[0]
+  end
 end

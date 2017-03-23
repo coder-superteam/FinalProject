@@ -14,14 +14,16 @@ class MessagesController < ApplicationController
 		end	
 		@message = @room.messages.build message_params
 		@message.user = current_user
-		unless @message.save
-			flash[:error] = "Error #{@message.errors.full_messages.to_sentence}"
-		end
-		redirect_back fallback_location: { action: "index", id: @room.id}
+		@message.save!
+		# let's broadcast message html to all the clients
+		ActionCable.server.broadcast 'messages', message: render_message(@message)
+		head :ok
 	end
 
 	private
-
+	def render_message(message)
+	    ApplicationController.render partial: 'messages/message', locals: {message: message}
+	end
 	def set_room
 		@room = Room.find_by_id(params[:room_id])
 	end

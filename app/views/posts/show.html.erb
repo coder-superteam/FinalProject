@@ -7,9 +7,14 @@
     	<%= @post.created_at %>
   	</div>
   </div>
-	
 
-	<% if @post.replies.count() == 0 %>
+	<% if @voted <= 0%>
+    <%= link_to 'Vote', create_vote_path(:vote_type => 0, :vote_action => 1, :post_id => @post.id, :user_id => current_user.id), method: :post %>
+  <% else %>
+    <%= link_to 'Disvote', create_vote_path(:vote_type => 0, :vote_action => -1, :post_id => @post.id, :user_id => current_user.id), method: :post %>
+  <% end %>
+
+	<% if @post.replies.count() <= 0 %>
 		<h5>don't have reply yet</h5>
 	<% else %>
 		<h5> <%= @post.replies.count() %> Replies </h5>

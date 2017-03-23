@@ -14,7 +14,8 @@
     </div>
     <div>
       <%= f.label :language %>
-      <%= f.text_field :language, class: "form-control" %>
+      <!-- <%= f.text_field :language, class: "form-control" %> -->
+      <%= f.select :language, options_for_select([['Việt Nam', 1], ['Laos', 2], ['English', 3]]), :class => 'form-control' %>
     </div>
     <div>
       <%= f.label :body %>

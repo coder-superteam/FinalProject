@@ -5,8 +5,6 @@
     <tr>
       <th>Title</th>
       <th>Language</th>
-      <th>User</th>
-      <th>Votes</th>
       <th>Created</th>
     </tr>
   </thead>
@@ -15,12 +13,8 @@
       <tr>
         <td><%= link_to post.title, post_path(post) %></td>
         <td><%= post.language %></td>
-        <td><%= post.user.email %></td>
-        <td><%= post.vote_number %></td>
         <td><%= post.created_at %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<%= link_to 'New post', new_post_path %>

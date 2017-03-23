@@ -3,7 +3,7 @@ class RoomsController < ApplicationController
 		@rooms = Room.all.order(created_at: :desc)
 	end
   def create
-  	@room = Room.new room_params
+  	@room = current_user.rooms.build(room_params)
   	if @room.save!
   		flash[:success] = "Create room successful!"
   	else 

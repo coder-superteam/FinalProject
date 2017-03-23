@@ -16,5 +16,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-material-design
-
 //= require toastr_rails
+//= require_tree .
+//= require cable

@@ -1,10 +1,10 @@
-# Final Project - *Victory English*
+# Final Project - *Translate Me Now*
 
-**Victory English** is a Ruby on Rails application that allows users to translate from English to Vietnamese with help from others.
+**Translate Me Now** is a Ruby on Rails application that allows users to translate from English to Vietnamese with help from others.
 
-- Submitted by: **PowerTeam**
-- Time spent: **19** hours
-- URL: **Insert your Heroku URL here**
+- Submitted by: **SuperTeam**
+- Time spent: **34** hours
+- URL: **https://translatemenow.herokuapp.com**
 - SimpleCov Test Coverage: [coverage/index.html](coverage/index.html)
 
 ## User Stories
@@ -41,10 +41,10 @@
 * [x] Users can manage their info, including avatar
 * [ ] Users can see all their posts in history
 * [ ] Users can make friends with other users
-* [ ] Users can create chat rooms
+* [x] Users can create chat rooms
 * [ ] Users can comment on others answer
 * [ ] Users can see who is online
-* [ ] Users can chat with their friends
+* [x] Users can chat with their friends
 * [ ] Users can send pictures in their chat
 * [ ] Users can see their points, and how they get their points
 
@@ -95,7 +95,7 @@ Some note will be appear here.
 
 ## License
 
-	Copyright [2017] [PowerTeam]
+	Copyright [2017] [SuperTeam]
 
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.

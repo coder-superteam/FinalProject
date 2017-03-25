@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170323151757) do
+ActiveRecord::Schema.define(version: 20170323164445) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,8 +32,9 @@ ActiveRecord::Schema.define(version: 20170323151757) do
     t.string   "title"
     t.string   "language"
     t.text     "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "vote_number"
     t.index ["user_id"], name: "index_posts_on_user_id", using: :btree
   end
 
@@ -85,8 +86,9 @@ ActiveRecord::Schema.define(version: 20170323151757) do
     t.integer  "post_id"
     t.integer  "reply_id"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "communication_id"
     t.index ["post_id"], name: "index_votes_on_post_id", using: :btree
     t.index ["reply_id"], name: "index_votes_on_reply_id", using: :btree
     t.index ["user_id"], name: "index_votes_on_user_id", using: :btree

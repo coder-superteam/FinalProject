@@ -3,17 +3,24 @@ class PostsController < ApplicationController
 	def index
 	    @posts = Post.all
 	    if params[:search]
-	      @posts = Post.search(params[:search]).order("created_at DESC")
+            if params[:sort_by] == 1.to_s
+                @posts = Post.search(params[:search]).order("vote_number DESC").where(language: params['filter_by'])
+            else
+                @posts = Post.search(params[:search]).order("created_at DESC").where(language: params['filter_by'])
+            end
 	    else
 	      @posts = Post.all.order("created_at DESC")
 	    end
     end
+
     def new
     	@post = Post.new
     end
+
     def create
     	if current_user
     		@post = Post.new post_params
+            @post.vote_number = 0
     		@post.user_id = current_user.id
     		if @post.save
     			flash[:success] = "Message created success"
@@ -26,9 +33,16 @@ class PostsController < ApplicationController
     		redirect_to new_user_session_path
     	end
     end
+
     def show
     	@post = Post.find_by(id: params['id'])
+        @voted = Post.voted(current_user.id, @post.id)
     	@reply = Reply.new
+    end
+
+    def history
+        'Find all histories belong to user'
+        @posts = Post.where(:user_id => current_user.id)
     end
 
     private

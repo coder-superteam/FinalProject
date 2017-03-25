@@ -8,6 +8,8 @@ class User < ApplicationRecord
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
   has_many :posts
   has_many :replies
+  has_many :rooms, dependent: :destroy
+  has_many :messages, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
@@ -28,5 +30,9 @@ class User < ApplicationRecord
 
   def email_verified?
     self.email && self.email !~ TEMP_EMAIL_REGEX
+  end
+
+  def name_or_default
+    name || email.split('@')[0]
   end
 end

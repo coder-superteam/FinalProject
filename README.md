@@ -1,10 +1,10 @@
-# Final Project - *Victory English*
+# Final Project - *Translate Me Now*
 
-**Victory English** is a Ruby on Rails application that allows users to translate from English to Vietnamese with help from others.
+**Translate Me Now** is a Ruby on Rails application that allows users to translate from English to Vietnamese with help from others.
 
-- Submitted by: **PowerTeam**
-- Time spent: **2** hours
-- URL: **Insert your Heroku URL here**
+- Submitted by: **SuperTeam**
+- Time spent: **34** hours
+- URL: **https://translatemenow.herokuapp.com**
 - SimpleCov Test Coverage: [coverage/index.html](coverage/index.html)
 
 ## User Stories
@@ -16,6 +16,8 @@
 * [ ] users can filter search results
 * [x] If there's no relative results, allow users to post new topic
 * [ ] Top posts of week, month, year
+* [ ] Send notification whenever post has updates
+* [ ] Send notification via email
 
 ### Translate
 * [ ] Users add context tags when they post
@@ -34,27 +36,47 @@
 
 ### Users
 
-* [ ] Users can login/signup/logout
-* [ ] Users can login through fb API
-* [ ] Users can manage their info, including avatar
+* [x] Users can login/signup/logout
+* [x] Users can login through fb API
+* [x] Users can manage their info, including avatar
 * [ ] Users can see all their posts in history
 * [ ] Users can make friends with other users
-* [ ] Users can create chat rooms
+* [x] Users can create chat rooms
 * [ ] Users can comment on others answer
+* [ ] Users can see who is online
+* [x] Users can chat with their friends
+* [ ] Users can send pictures in their chat
+* [ ] Users can see their points, and how they get their points
 
 ## Bonus features
 
-### Practice
+### Posts
 
-* [ ] At specific time, there'll be an event, users practice this (translate sentences) to earn points.
+* [ ] Post details is updated realtime (whenever there's a new reply/comment, it should show immediately).
+* [ ] Implement Infinite Scroll when showing search results.
+* [ ] User reply notification email to post a comment.
+* [ ] Search suggestions appear when user typing.
+* [ ] Users can report dupplicated posts.
+* [ ] Whenever there're more than 10 reports, post will be disabled (cannot reply).
+* [ ] System will show notifications in a menu tab with a badge icon.
+* [ ] Users can post a media (audio, video, image) instead of typing.
+* [ ] Allow drag-n-drop feature when posting a media.
+* [ ] Limit the media size
 
 ### Search
 
-* [ ] Will be added soon...
+* [ ] Apply some algorithm to increase accuracy.
 
 ### Translate
 
 * [ ] Integrate Bing Translate or other engine, automatically translate user's sentences
+* [ ] Users can configure default translator
+
+### Practice
+
+* [ ] Two types of event: online and offline
+* [ ] Online events: translate sentences to earn points.
+* [ ] Offline events: limit number of attendance, allow users to book.
 
 ### Points
 
@@ -62,10 +84,8 @@
 
 ### Users
 
-* [ ] Users can see who is online
-* [ ] Users can chat with their friends
-* [ ] Users can send pictures in their chat
-* [ ] Users can see their points, and how they get their points
+* [ ] Users can loggin using their GG aacount.
+* [ ] Reset password using OTP
 * [ ] Require at least x posts to vote
 * [ ] Some higher level require minimum x posts to comment
 
@@ -75,7 +95,7 @@ Some note will be appear here.
 
 ## License
 
-	Copyright [2017] [PowerTeam]
+	Copyright [2017] [SuperTeam]
 
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.

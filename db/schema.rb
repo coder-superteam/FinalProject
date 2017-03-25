@@ -19,8 +19,10 @@ ActiveRecord::Schema.define(version: 20170323164445) do
     t.integer  "user_id"
     t.integer  "room_id"
     t.string   "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.datetime "read_at"
+    t.integer  "recipient_id"
     t.index ["room_id"], name: "index_messages_on_room_id", using: :btree
     t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
   end
@@ -50,6 +52,7 @@ ActiveRecord::Schema.define(version: 20170323164445) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
 
   create_table "users", force: :cascade do |t|

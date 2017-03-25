@@ -1,0 +1,18 @@
+<h1>Welcome to Room Chat</h1>
+<p>Please choose your room or create new one</p>
+<div class="container-fluid" style="padding-right: 30%; padding-left: 30%;">
+	<div class="card card-block">
+		<ul class="list-group">
+			<%= render @rooms %>
+		</ul>
+
+		<%= form_for Room.new do |f| %>
+		<div class="input-group" style="margin-top: 10%">
+			<%= f.text_field :name, {autofocus: 'true', class: 'form-control', placeholder: 'Room name'} %>
+			<span class="input-group-btn">
+				<%= f.submit 'Add', class: 'btn btn-primary'%>
+			</span>
+		</div>
+		<% end %>
+	</div>
+</div>

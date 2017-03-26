@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'responders'
 gem 'google-api-client', '~> 0.10'
 # gem "bing_translator", "~> 4.7.0"
 

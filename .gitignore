@@ -17,3 +17,5 @@
 .byebug_history
 /.idea
 /public/system/users/avatars
+public/uploads
+.env

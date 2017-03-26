@@ -1,0 +1,15 @@
+<h1>Ocr#index</h1>
+<p>Get Text From Image</p>
+
+<%= form_tag('get_text', remote: true) do %>
+	<div class="form-group">
+		<%= label_tag "image" %>
+		<%= text_field_tag "image", nil, {class: 'form-control'} %>
+	</div>	
+	
+	<%= submit_tag "Get Text", class: 'btn btn-default' %>
+<% end %>
+
+<div id = 'result'>
+	
+</div>

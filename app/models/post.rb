@@ -2,7 +2,7 @@ class Post < ApplicationRecord
 	belongs_to :user
 	has_many :replies
 	has_many :votes
-	validates :title, :language, :body, presence: true
+	validates :title, :body, presence: true
   mount_uploader :image, ImageUploader
 
 

@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
 	
+  get 'recognition/index'
+
+  get 'ocr/index'
+  post 'ocr/get_text' => "ocr#getText"
+
+  get 'translators/index'
+
 	resources :rooms do
 		resources :messages
 	end

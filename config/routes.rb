@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 	end
 
   post 'create_vote' => 'votes#create'
+  get 'question_format' => 'posts#question_format'
 	resources :posts do
   	resources :replies
   end

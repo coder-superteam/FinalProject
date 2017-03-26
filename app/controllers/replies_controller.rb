@@ -11,6 +11,7 @@ class RepliesController < ApplicationController
   		@reply = Reply.new reply_params
   		@reply.user_id = current_user.id
   		@reply.post_id = params[:post_id]
+  		@reply.vote_number = 0
 
   		if @reply.save
   			flash[:success] = "Message created success"

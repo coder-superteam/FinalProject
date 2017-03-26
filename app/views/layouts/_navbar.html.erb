@@ -10,8 +10,10 @@
     </div>
     <div class="navbar-collapse collapse navbar-responsive-collapse">
       <ul class="nav navbar-nav">
-        <li><%= link_to "Ask question", new_post_path%></li>
+        
+        <li><%= link_to "Ask question", question_format_path %></li>
         <li><%= link_to "Chat", rooms_path %></li>
+        <li><a href="<%= history_path %>">History</a></li>
         
         <!-- <li class=""><a href="javascript:void(0)">Active</a></li>
         <li><a href="javascript:void(0)">Link</a></li>

@@ -13,11 +13,13 @@ class PostsController < ApplicationController
 	    end
     end
 
-    def new
+    def new()
     	@post = Post.new
+        @title = params[:format]
     end
 
     def create
+
     	if current_user
     		@post = Post.new post_params
             @post.vote_number = 0
@@ -36,8 +38,12 @@ class PostsController < ApplicationController
 
     def show
     	@post = Post.find_by(id: params['id'])
-        @voted = Post.voted(current_user.id, @post.id)
+        @voted = 0
+        if current_user
+            @voted = Post.voted(current_user.id, @post.id)
+        end
     	@reply = Reply.new
+        
     end
 
     def history
@@ -45,8 +51,11 @@ class PostsController < ApplicationController
         @posts = Post.where(:user_id => current_user.id)
     end
 
+    def question_format
+    end
+
     private
     	def post_params
-	      params.require(:post).permit(:title, :language, :body)
+	      params.require(:post).permit(:title, :language, :body, :image)
 	    end
 end

@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_filter :ensure_signup_complete, only: [:new, :create, :update, :destroy]
   before_filter :configure_permitted_parameters, if: :devise_controller?
+  helper_method :voted_for_reply, :count_vote_for_reply
 
   protected
 
@@ -18,4 +19,25 @@ class ApplicationController < ActionController::Base
       redirect_to finish_signup_path(current_user)
     end
   end
+
+  
+
+  def voted_for_reply(user_id, reply_id)
+    @votes = Vote.where(user_id: user_id, reply_id: reply_id).all
+    @result = 0
+    @votes.each do |vote|
+      @result += vote.vote_action
+    end
+    @result
+  end
+
+  # def count_vote_for_reply(reply_id)
+  #   @votes = Vote.where(reply_id: reply_id).all
+  #   @result = 0
+  #   @votes.each do |vote|
+  #     @result += vote.vote_action
+  #   end
+  #   @result
+  # end
+
 end

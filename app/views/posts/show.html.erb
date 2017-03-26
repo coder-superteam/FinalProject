@@ -3,37 +3,64 @@
     <h4 class="card-title"> <%= @post.title %> </h4>
     <h6 class="card-subtitle mb-2 text-muted"><%= @post.user.email %></h6>
     <p class="card-text"> <%= @post.body %> </p>
-		<div class="card-footer text-muted">
-    	<%= @post.created_at %>
-  	</div>
+    <img class="card-img-top" src=" <%= @post.image.url %>" alt="Card image cap">
+    <div class="card-footer text-muted">
+      <%= @post.created_at %>
+    </div>
   </div>
-
-	<% if @voted <= 0%>
-    <%= link_to 'Vote', create_vote_path(:vote_type => 0, :vote_action => 1, :post_id => @post.id, :user_id => current_user.id), method: :post %>
+  <% if current_user %>
+    <% if @voted == 0%>
+      <%= link_to 'Vote', create_vote_path(:vote_type => 0, :vote_action => 1, :post_id => @post.id), method: :post %>
+      <%= link_to 'Disvote', create_vote_path(:vote_type => 0, :vote_action => -1, :post_id => @post.id), method: :post %>
+    <% elsif @voted <= 0 %>
+      <%= link_to 'Vote', create_vote_path(:vote_type => 0, :vote_action => 1, :post_id => @post.id), method: :post %>
+    <% else %>
+      <%= link_to 'Disvote', create_vote_path(:vote_type => 0, :vote_action => -1, :post_id => @post.id), method: :post %>
+    <% end %>
   <% else %>
-    <%= link_to 'Disvote', create_vote_path(:vote_type => 0, :vote_action => -1, :post_id => @post.id, :user_id => current_user.id), method: :post %>
+    <%= link_to 'Vote', create_vote_path(:vote_type => 0, :vote_action => 1, :post_id => @post.id), method: :post %>
+    <%= link_to 'Disvote', create_vote_path(:vote_type => 0, :vote_action => -1, :post_id => @post.id), method: :post %>
   <% end %>
 
-	<% if @post.replies.count() <= 0 %>
-		<h5>don't have reply yet</h5>
-	<% else %>
-		<h5> <%= @post.replies.count() %> Replies </h5>
-		<% @post.replies.each do |reply| %>
+  <h5> <%= @post.vote_number %> votes for this post </h5>
 
-			<div class="card-block">
-		    <h6 class="card-subtitle mb-2 text-muted"><%= reply.user.email %></h6>
-		    <p class="card-text"> <%= reply.body %> </p>
-				<div class="card-footer text-muted">
-		    	<%= reply.created_at %>
-		  	</div>
-		  </div>
+  <% if @post.replies.count() <= 0 %>
+    <h5>don't have reply yet</h5>
+  <% else %>
+    <h5> <%= @post.replies.count() %> Replies </h5>
+    <% @post.replies.each do |reply| %>
 
-		<% end %>
-	<% end %>
+      <div class="card-block">
+        <h6 class="card-subtitle mb-2 text-muted"><%= reply.user.email %></h6>
+        <p class="card-text"> <%= reply.body %> </p>
+        <div class="card-footer text-muted">
+          <%= reply.created_at %>
+        </div>
+        
+          <% if current_user %>
+            <% if voted_for_reply(current_user.id, reply.id) == 0%>
+              <%= link_to 'Vote', create_vote_path(:vote_type => 1, :vote_action => 1, :reply_id => reply.id, :post_id => @post.id), method: :post %>
+              <%= link_to 'Disvote', create_vote_path(:vote_type => 1, :vote_action => -1, :reply_id => reply.id, :post_id => @post.id), method: :post %>
+            <% elsif voted_for_reply(current_user.id, reply.id) <= 0 %>
+              <%= link_to 'Vote', create_vote_path(:vote_type => 1, :vote_action => 1, :reply_id => reply.id, :post_id => @post.id), method: :post %>
+            <% else %>
+              <%= link_to 'Disvote', create_vote_path(:vote_type => 1, :vote_action => -1, :reply_id => reply.id, :post_id => @post.id), method: :post %>
+            <% end %>
+          <% else %>
+            <%= link_to 'Vote', create_vote_path(:vote_type => 1, :vote_action => 1, :reply_id => reply.id, :post_id => @post.id), method: :post %>
+            <%= link_to 'Disvote', create_vote_path(:vote_type => 1, :vote_action => -1, :reply_id => reply.id, :post_id => @post.id), method: :post %>
+          <% end %>
+          
+          <h5> <%= reply.vote_number %> votes for this reply </h5>
+
+      </div>
+
+    <% end %>
+  <% end %>
 </div>
 
 <%= form_for [@post, @reply] do |f| %>
-	<% if @reply.errors.size > 0 %>
+  <% if @reply.errors.size > 0 %>
     <div class="alert alert-danger">
       <%= @reply.errors.full_messages.to_sentence %>
     </div>

@@ -61,4 +61,5 @@ end
 gem 'bootstrap-material-design'
 gem 'toastr_rails'
 gem 'paperclip', '~> 4.1'
+gem 'carrierwave', '~> 1.0'
 

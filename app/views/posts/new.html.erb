@@ -10,16 +10,20 @@
   <div class="form-group">
     <div>
       <%= f.label :title %>
-      <%= f.text_field :title, class: "form-control" %>
+      <%= f.text_field :title, class: "form-control", value: @title %>
     </div>
     <div>
       <%= f.label :language %>
-      <!-- <%= f.text_field :language, class: "form-control" %> -->
       <%= f.select :language, options_for_select([['Việt Nam', 1], ['Laos', 2], ['English', 3]]), :class => 'form-control' %>
     </div>
     <div>
       <%= f.label :body %>
       <%= f.text_area :body, class: "form-control" %>
+    </div>
+
+    <div>
+      <%= f.label :image %>
+      <%= f.file_field :image %>
     </div>
   </div>
   <%= f.submit class: "btn btn-secondary" %>

@@ -1,3 +1,204 @@
 @import "bootstrap";
 @import "bootstrap-material-design";
-@import "message";
+//@import "message";
+
+navbar {
+  color: white !important;
+  background: transparent;
+}
+
+.text-black{
+  color: black !important;
+}
+
+.text-right{
+  text-align: right;
+}
+
+.btn {
+  box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.12), 0 1px 6px 0 rgba(0, 0, 0, 0.12);
+}
+
+h1, h2, label, input, a, li, th, td, i, .btn{
+  color: white !important;
+}
+.navbar{
+  -webkit-box-shadow: 10px 10px 42px 0px rgba(0,0,0,0.24);
+  -moz-box-shadow: 10px 10px 42px 0px rgba(0,0,0,0.24);
+  box-shadow: 10px 10px 42px 0px rgba(0,0,0,0.24);
+}
+
+.navbar-brand{
+  font-size: 25px;
+}
+
+.navbar-nav{
+  font-size: 20px;
+}
+.card-header{
+  color: green;
+  border-color: green;
+}
+
+.container{
+  //margin-bottom: 20px;
+  padding: 20px;
+
+}
+
+.box-shadow{
+  padding: 20px;
+  -webkit-box-shadow: 10px 10px 42px 0px rgba(0,0,0,0.24);
+  -moz-box-shadow: 10px 10px 42px 0px rgba(0,0,0,0.24);
+  box-shadow: 10px 10px 42px 0px rgba(0,0,0,0.24);
+}
+
+.width-600 {
+  width: 600px;
+  margin: auto;
+}
+.avatar{
+  border-radius: 50px;
+}
+
+.nav-item{
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+body {
+  background: url('bg.jpg') center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+}
+
+
+//=================================== Reply Style===========================
+.panel-shadow {
+  box-shadow: rgba(0, 0, 0, 0.3) 7px 7px 7px;
+}
+
+.panel-white {
+  border: 1px solid #dddddd;
+}
+
+.panel-white .panel-heading {
+  color: #333;
+  background-color: #fff;
+  border-color: #ddd;
+}
+
+.panel-white .panel-footer {
+  background-color: #fff;
+  border-color: #ddd;
+}
+
+.post .post-heading {
+  height: 95px;
+  padding: 20px 15px;
+}
+
+.post .post-heading .avatar {
+  width: 60px;
+  height: 60px;
+  display: block;
+  margin-right: 15px;
+}
+
+.post .post-heading .meta .title {
+  margin-bottom: 0;
+}
+
+.post .post-heading .meta .title a {
+  color: black;
+}
+
+.post .post-heading .meta .title a:hover {
+  color: #aaaaaa;
+}
+
+.post .post-heading .meta .time {
+  margin-top: 8px;
+  color: #999;
+}
+
+.post .post-image .image {
+  width: 100%;
+  height: auto;
+}
+
+.post .post-description {
+  padding: 15px;
+}
+
+.post .post-description p {
+  font-size: 14px;
+}
+
+.post .post-description .stats {
+  margin-top: 20px;
+}
+
+.post .post-description .stats .stat-item {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.post .post-description .stats .stat-item .icon {
+  margin-right: 8px;
+}
+
+.post .post-footer {
+  border-top: 1px solid #ddd;
+  padding: 15px;
+}
+
+.post .post-footer .input-group-addon a {
+  color: #454545;
+}
+
+.post .post-footer .comments-list {
+  padding: 0;
+  margin-top: 20px;
+  list-style-type: none;
+}
+
+.post .post-footer .comments-list .comment {
+  display: block;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.post .post-footer .comments-list .comment .avatar {
+  width: 35px;
+  height: 35px;
+}
+
+.post .post-footer .comments-list .comment .comment-heading {
+  display: block;
+  width: 100%;
+}
+
+.post .post-footer .comments-list .comment .comment-heading .user {
+  font-size: 14px;
+  font-weight: bold;
+  display: inline;
+  margin-top: 0;
+  margin-right: 10px;
+}
+
+.post .post-footer .comments-list .comment .comment-heading .time {
+  font-size: 12px;
+  color: #aaa;
+  margin-top: 0;
+  display: inline;
+}
+
+.post .post-footer .comments-list .comment .comment-body {
+  margin-left: 50px;
+}
+
+.post .post-footer .comments-list .comment > .comments-list {
+  margin-left: 50px;
+}

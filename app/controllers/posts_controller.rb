@@ -26,7 +26,7 @@ class PostsController < ApplicationController
     		@post.user_id = current_user.id
     		if @post.save
     			flash[:success] = "Message created success"
-					redirect_to post_path (@post) 
+					redirect_to post_path (@post)
     		else
     			render 'new'
     		end
@@ -43,7 +43,7 @@ class PostsController < ApplicationController
             @voted = Post.voted(current_user.id, @post.id)
         end
     	@reply = Reply.new
-        
+
     end
 
     def history

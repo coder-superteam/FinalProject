@@ -288,6 +288,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aws-sdk
   bootstrap-material-design
   bootstrap-sass
   byebug

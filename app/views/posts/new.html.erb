@@ -1,21 +1,15 @@
-<h1>Create new post</h1>
+<%= form_for @post do |f| %>
+<h1><%= @post.title %></h1>
+<%= f.hidden_field :title %>
 <div class="box-shadow">
-  <%= form_for @post do |f| %>
       <% if @post.errors.size > 0 %>
           <div class="alert alert-danger">
             <%= @post.errors.full_messages.to_sentence %>
           </div>
       <% end %>
 
-
       <div class="form-group">
-        <%= f.label :title %>
-        <%= f.text_field :title, class: "form-control", value: @title %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :body %>
-        <%= f.text_field :body, class: "form-control" %>
+        <%= f.text_area :body, class: "form-control", placeholder: "Please enter your sentences", row: "3" %>
       </div>
 
       <div class="form-group">
@@ -24,5 +18,5 @@
       </div>
 
         <%= f.submit 'Ask', class: "btn btn-secondary text-right" %>
-  <% end %>
 </div>
+<% end %>

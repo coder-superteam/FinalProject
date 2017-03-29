@@ -1,13 +1,5 @@
 <%= form_tag(posts_path, :method => "get", class: " my-12 my-lg-0") do %>
     <div class="form-group row">
-      <div>
-        <li>
-          Sort by: <%= select_tag(:sort_by, options_for_select([['Vote', 1], ['Time', 2]])) %>
-        </li>
-        <li>
-          Filter by: <%= select_tag(:filter_by, options_for_select([['Việt Nam', 1], ['Laos', 2], ['English', 3]])) %>
-        </li>
-      </div>
       <div class="text-center">
         <%= text_field_tag :search, params[:search], placeholder: "Search", class: 'form-control' %>
         <%= link_to posts_path, class: 'btn ' do %>

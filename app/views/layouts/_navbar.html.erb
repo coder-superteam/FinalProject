@@ -10,10 +10,11 @@
     </div>
     <div class="navbar-collapse collapse navbar-responsive-collapse">
       <ul class="nav navbar-nav">
-        <li><%= link_to question_format_path do %>
+        <!-- <li><%= link_to question_format_path do %>
               <i class="fa fa-question-circle" aria-hidden="true"></i> Ask question
           <% end %>
-        </li>
+        </li> -->
+        <% if user_signed_in? %>
         <li><%= link_to rooms_path do %>
               <i class="fa fa-comments" aria-hidden="true"> </i> Chat
           <% end %>
@@ -22,6 +23,7 @@
               <i class="fa fa-history" aria-hidden="true"></i> History
           <% end %>
         </li>
+        <% end %>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">

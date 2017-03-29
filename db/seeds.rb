@@ -16,3 +16,10 @@ password = 'pass123'
     password_confirmation: password
   )
 end
+
+User.create(
+  	name: "Google Translator",
+    email: "googlebot@admin.com",
+    password: password,
+    password_confirmation: password
+  )

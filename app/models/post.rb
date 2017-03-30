@@ -7,7 +7,7 @@ class Post < ApplicationRecord
 
 
 	def self.search(search)
-	  where("LOWER(title) LIKE ?", "%#{search.downcase}%")
+	  where("LOWER(body) ILIKE ? OR LOWER(keywords) ILIKE ?", "%#{search.downcase}%", "%#{search.downcase}%")
 	end
 
 	def self.voted(user_id, post_id)

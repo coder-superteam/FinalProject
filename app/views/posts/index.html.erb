@@ -3,10 +3,10 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Language</th>
+      <th>Content</th>
       <th>User</th>
-      <th>Votes</th>
+      <th>Votes Number</th>
+      <th>Replies Number</th>
       <th>Asked</th>
     </tr>
   </thead>
@@ -14,9 +14,9 @@
     <% @posts.each do |post| %>
       <tr>
         <td><%= link_to post.title, post_path(post) %></td>
-        <td><%= post.language %></td>
-        <td><%= post.user.email %></td>
+        <td><%= post.user.name %></td>
         <td><%= post.vote_number %></td>
+        <td><%= post.count_reply(post.id) %></td>
         <td><%= time_ago_in_words post.created_at %></td>
       </tr>
     <% end %>

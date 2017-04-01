@@ -12,7 +12,6 @@ class UsersController < ApplicationController
   def update
     if @user.update(user_params)
       sign_in(@user == current_user ? @user : current_user, bypass: true)
-      raise 'aaa'
       edirect_to @user, notice: "Your profile was successfully updated."
     else
       render "edit"

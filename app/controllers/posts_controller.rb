@@ -6,15 +6,14 @@ require 'google/apis/translate_v2'
 class PostsController < ApplicationController
     skip_before_action :authenticate_user!, only: [:index, :show]
 	def index
-	    @posts = Post.all
+	    @posts = Post.all.order("created_at DESC")
+
 	    if params[:search]
             if params[:sort_by] == 1.to_s
-                @posts = Post.search(params[:search]).order("vote_number DESC").where(language: params['filter_by'])
+                @posts = Post.search(params[:search]).order("vote_number DESC")
             else
-                @posts = Post.search(params[:search]).order("created_at DESC").where(language: params['filter_by'])
+                @posts = Post.search(params[:search]).order("created_at DESC")
             end
-	    else
-	      @posts = Post.all.order("created_at DESC")
 	    end
     end
 

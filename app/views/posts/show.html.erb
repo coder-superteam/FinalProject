@@ -1,4 +1,5 @@
 <div class="container">
+  <%= link_to 'New post', new_post_path, class: "btn btn-secondary" %>
   <div class="row">
     <div class="col-sm-8">
       <div class="panel panel-white post panel-shadow">
@@ -50,7 +51,7 @@
     </div>
   </div>
 </div>
-<!------------------------------------------------------------------ REPLY------------------------------------------------------------------>
+<!------------------------------------------------------------------ REPLY---------------------------------------------------------------->
 <div class="container">
 <% if @post.replies.count() <= 0 %>
     <h2>Don't have any reply yet</h2></div>
@@ -58,7 +59,7 @@
     <div class="container">
       <h2><%= @post.replies.count() %> Replies </h2>
     </div>
-    <% @post.replies.each do |reply| %>
+    <% @post.replies.sort { |a,b| b.vote_number <=> a.vote_number }.each do |reply| %>
         <div class="container text-black">
           <div class="row">
             <div class="col-sm-8">
@@ -114,6 +115,7 @@
             <%= @reply.errors.full_messages.to_sentence %>
           </div>
       <% end %>
+
       <div class="form-group">
         <div>
           <%= f.label :"Your Answer" %>

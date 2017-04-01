@@ -30,6 +30,10 @@ gem 'redis', '~> 3.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'responders'
+gem 'google-api-client', '~> 0.10'
+# gem "bing_translator", "~> 4.7.0"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
@@ -62,4 +66,9 @@ gem 'bootstrap-material-design'
 gem 'toastr_rails'
 gem 'paperclip', '~> 4.1'
 gem 'carrierwave', '~> 1.0'
+gem 'dotenv-rails'
+gem 'carrierwave-aws'
+gem 'ocr_space'
+gem 'aws-sdk'
 
+gem 'lita'

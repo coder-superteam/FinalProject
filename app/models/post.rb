@@ -2,12 +2,12 @@ class Post < ApplicationRecord
 	belongs_to :user
 	has_many :replies
 	has_many :votes
-	validates :title, :language, :body, presence: true
+	validates :title, :body, presence: true
   mount_uploader :image, ImageUploader
 
 
 	def self.search(search)
-	  where("LOWER(title) LIKE ?", "%#{search.downcase}%")
+	  where("LOWER(body) LIKE ?", "%#{search[0].downcase}%")
 	end
 
 	def self.voted(user_id, post_id)
@@ -21,6 +21,14 @@ class Post < ApplicationRecord
 
 	def image_path_or_image
     image_path.presence || image
+  end
+
+  def count_reply(post_id)
+  	Reply.where(post_id:post_id).count
+  end
+
+  def self.get_last_10_posts()
+
   end
 
 	# def self.count_vote(post_id)

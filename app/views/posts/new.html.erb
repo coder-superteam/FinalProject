@@ -1,30 +1,22 @@
-<h1>Create new post</h1>
-
 <%= form_for @post do |f| %>
-  <% if @post.errors.size > 0 %>
-    <div class="alert alert-danger">
-      <%= @post.errors.full_messages.to_sentence %>
-    </div>
-  <% end %>
+<h1><%= @post.title %></h1>
+<%= f.hidden_field :title %>
+<div class="box-shadow">
+      <% if @post.errors.size > 0 %>
+          <div class="alert alert-danger">
+            <%= @post.errors.full_messages.to_sentence %>
+          </div>
+      <% end %>
 
-  <div class="form-group">
-    <div>
-      <%= f.label :title %>
-      <%= f.text_field :title, class: "form-control", value: @title %>
-    </div>
-    <div>
-      <%= f.label :language %>
-      <%= f.select :language, options_for_select([['Việt Nam', 1], ['Laos', 2], ['English', 3]]), :class => 'form-control' %>
-    </div>
-    <div>
-      <%= f.label :body %>
-      <%= f.text_area :body, class: "form-control" %>
-    </div>
+      <div class="form-group">
+        <%= f.text_area :body, class: "form-control", placeholder: "Please enter your sentences", row: "3" %>
+      </div>
 
-    <div>
-      <%= f.label :image %>
-      <%= f.file_field :image %>
-    </div>
-  </div>
-  <%= f.submit class: "btn btn-secondary" %>
+      <div class="form-group">
+        <%= f.label :image %>
+        <%= f.file_field :image %>
+      </div>
+
+        <%= f.submit 'Ask', class: "btn btn-secondary text-right" %>
+</div>
 <% end %>

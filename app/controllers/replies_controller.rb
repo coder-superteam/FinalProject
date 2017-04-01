@@ -14,7 +14,7 @@ class RepliesController < ApplicationController
   		@reply.vote_number = 0
 
   		if @reply.save
-  			flash[:success] = "Message created success"
+  			# flash[:success] = "Message created success"
   		end
   		redirect_to post_path (params[:post_id]) 
     else

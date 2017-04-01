@@ -113,7 +113,7 @@ class PostsController < ApplicationController
 
     def history
         'Find all histories belong to user'
-        @posts = Post.where(:user_id => current_user.id)
+        @posts = Post.where(:user_id => current_user.id).order("updated_at DESC, vote_number DESC")
     end
 
     def question_format

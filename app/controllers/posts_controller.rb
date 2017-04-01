@@ -44,51 +44,6 @@ class PostsController < ApplicationController
             @post.vote_number = 0
     		@post.user_id = current_user.id
     		if @post.save
-                unless @post.image.nil?
-                    # Get image link and send to Amazon Rekognition
-                   client = Aws::Rekognition::Client.new(
-                     region: "us-east-1"
-                     )
-                   resp = client.detect_labels(
-                       image: { bytes: @post.image.file.read }
-                       )
-                   logger.info('=====> resp = ' + resp.to_s)
-                   resp.labels.each do |label|
-                        puts "#{label.name}-#{label.confidence.to_i}"
-                    end
-                    labels = resp.labels.map{|l| l.name}
-                    description = labels.to_s
-                    logger.info(description)
-                    #  Get text
-                    if labels.include? 'Text' || 'Label'
-                        resource = OcrSpace::Resource.new(apikey: ENV.fetch('OCR_SPACE_KEY'))
-                        begin
-                            result = resource.clean_convert file: @post.image.file.file
-                            description = description + '[' + result + "]"
-                        rescue
-                            result = 'Cannot convert to text'
-                        end
-                        logger.debug('result = ' + result)
-                    end
-                    # Put description
-                    @post.keywords = description
-                    @post.save!
-                    # Call translate
-                    if result != 'Cannot convert to text'
-                        translate = Google::Apis::TranslateV2::TranslateService.new
-                        translate.key = ENV.fetch('GG_API_KEY')
-                        result = translate.list_translations(result, 'vi', source: 'en')
-                        puts result.translations.first.translated_text
-
-                        # Create a reply
-                        @reply = Reply.new body: result.translations.first.translated_text
-                        @reply.user_id = User.find_by_email('googlebot@admin.com').id
-                        @reply.post_id = @post.id
-                        @reply.vote_number = 0
-
-                        @reply.save
-                    end
-                end
                 # Redirect to user's post
 				redirect_to post_path (@post)
     		else

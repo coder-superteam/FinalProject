@@ -15,8 +15,12 @@
           </div>
         </div>
         <div class="post-description">
-          <h3>&ldquo; <%= @post.title %>&rdquo;</h3>
-          <img class="card-img-top" src=" <%= @post.image.url %>">
+          <h3><%= @post.title %></h3>
+          <% if @post.image.url.nil? %>
+              <h3>&ldquo; <%= @post.body %>&rdquo;</h3>
+            <% else %>
+              <img class="card-img-top" src=" <%= @post.image.url %>">
+          <% end %>          
           <div class="stats">
             <a href="#" class="btn btn-default stat-item">
               <i class="fa fa-thumbs-up icon"></i>2

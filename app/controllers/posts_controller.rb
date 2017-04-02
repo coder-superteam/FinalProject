@@ -1,8 +1,3 @@
-require 'ocr_space'
-require 'dotenv'
-require 'aws-sdk'
-require 'google/apis/translate_v2'
-
 class PostsController < ApplicationController
     skip_before_action :authenticate_user!, only: [:index, :show]
 	def index
@@ -44,6 +39,11 @@ class PostsController < ApplicationController
             @post.vote_number = 0
     		@post.user_id = current_user.id
     		if @post.save
+                if @post.image.url.nil?
+                    TranslateWorker.perform_async(@post.id)
+                else
+                    ImageAnalysingWorker.perform_async(@post.id)
+                end
                 # Redirect to user's post
 				redirect_to post_path (@post)
     		else

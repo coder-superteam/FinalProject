@@ -33,7 +33,7 @@ User.create(
   )
 
 # Generate Post
-20.times do |i|
+5.times do |i|
   user = User.create(
     name: Faker::Name.name,
     email: Faker::Internet.email,
@@ -76,7 +76,7 @@ User.create(
     )
 end
 
-20.times do |i|
+5.times do |i|
   user = User.create(
     name: Faker::Name.name,
     email: Faker::Internet.email,

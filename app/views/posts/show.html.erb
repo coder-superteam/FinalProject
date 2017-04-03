@@ -5,11 +5,11 @@
       <div class="panel panel-white post panel-shadow">
         <div class="post-heading">
           <div class="pull-left image">
-            <img src="<%= current_user.avatar.url(:thumb) %>" class="img-circle avatar" alt="user profile image">
+            <img src="<%= @post.user.avatar.url(:thumb) %>" class="img-circle avatar" alt="user profile image">
           </div>
           <div class="pull-left meta">
             <div class="title">
-              <b><%= @post.user.email %></b> asked
+              <b><%= @post.user.name %></b> asked
             </div>
             <h6 class="text-muted time"><%= time_ago_in_words(@post.created_at) %></h6>
           </div>

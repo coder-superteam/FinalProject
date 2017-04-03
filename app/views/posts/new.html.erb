@@ -9,12 +9,12 @@
       <% end %>
 
       <div class="form-group">
-        <%= f.text_area :body, class: "form-control", placeholder: "Please enter your sentences", row: "3" %>
+        <%= f.text_area :body, class: "form-control", placeholder: "Please enter your sentences", id: "post-content" %>
       </div>
 
       <div class="form-group">
         <%= f.label :image %>
-        <%= f.file_field :image %>
+        <%= f.file_field :image, id: "image-uploader" %>
       </div>
 
         <%= f.submit 'Ask', class: "btn btn-secondary text-right" %>

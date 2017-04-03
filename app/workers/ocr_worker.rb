@@ -13,7 +13,8 @@ class OcrWorker
         	resource = OcrSpace::Resource.new(apikey: ENV.fetch('OCR_SPACE_KEY'))
         	# begin
                 logger.info(post.image.file.file)
-        		result = resource.clean_convert file: post.image.file.file
+        		# result = resource.clean_convert file: post.image.file.file
+                result = resource.clean_convert url: post.image.url
                 # Put description
                 if !result.nil? && !post.keywords.nil?
         		  post.keywords = post.keywords + '[' + result + "]" 

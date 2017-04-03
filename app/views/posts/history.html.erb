@@ -1,24 +1,3 @@
-<h1>Posts</h1>
-
-<div class="box-shadow">
-  <table class="table">
-      <thead>
-    <tr>
-      <th>Content</th>
-      <th>Votes Number</th>
-      <th>Replies Number</th>
-      <th>Asked</th>
-    </tr>
-  </thead>
-      <tbody>
-        <% @posts.each do |post| %>
-          <tr>
-            <td><%= link_to post.body.blank? ? post.keywords : post.body, post_path(post) %></td>
-            <td><%= post.vote_number %></td>
-            <td><%= post.count_reply(post.id) %></td>
-            <td><%= time_ago_in_words post.created_at %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-</div>
+<% @posts.each do |post| %>
+    <%= render partial: 'layouts/card', locals: {post: post} %>
+<% end %>

@@ -1,0 +1,30 @@
+<div class="col-sm-6">
+  <a href="<%= post_path(post) %>" style="text-decoration: none">
+    <div class="panel panel-white post panel-shadow">
+      <div class="post-heading">
+        <div class="pull-left image">
+          <img src="<%= post.user.avatar.url(:thumb) %>" class="img-circle avatar" style="margin-top: -5px">
+        </div>
+        <div class="pull-left meta">
+          <div class="title">
+            <b class="text-black"><%= post.user.name %></b> <span class="text-black">asked</span>
+          </div>
+          <h6 class="text-muted time"><%= time_ago_in_words(post.created_at) %> ago</h6>
+        </div>
+      </div>
+      <div class="post-description">
+        <h3 style="color: black !important;">&ldquo;<%= post.title %>
+          <strong><%= post.body %></strong>&rdquo;</h3>
+        <h3>
+          <div>
+            <!--<img class="card-img-top" src="  post.image.url %>" style="max-width: 220px">-->
+          </div>
+          <div class="badge label-primary"> <%= pluralize(post.count_reply(post.id), 'reply') %>
+          </div>
+          <div class="badge label-info"> <%= pluralize(post.vote_number, 'vote') %>
+          </div>
+        </h3>
+      </div>
+    </div>
+  </a>
+</div>

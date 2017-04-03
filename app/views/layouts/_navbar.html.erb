@@ -15,14 +15,18 @@
           <% end %>
         </li> -->
         <% if user_signed_in? %>
-        <li><%= link_to rooms_path do %>
-              <i class="fa fa-comments" aria-hidden="true"> </i> Chat
-          <% end %>
-        </li>
-        <li><%= link_to history_path do %>
-              <i class="fa fa-history" aria-hidden="true"></i> History
-          <% end %>
-        </li>
+            <li><%= link_to new_post_path do %>
+                  <i class="fa fa-question-circle" aria-hidden="true"></i> New question
+              <% end %>
+            </li>
+            <li><%= link_to history_path do %>
+                  <i class="fa fa-history" aria-hidden="true"></i> History
+              <% end %>
+            </li>
+            <li><%= link_to rooms_path do %>
+                  <i class="fa fa-comments" aria-hidden="true"> </i> Chat
+              <% end %>
+            </li>
         <% end %>
       </ul>
 
@@ -30,7 +34,7 @@
         <% if user_signed_in? %>
             <li><%= link_to 'Profile', edit_user_registration_path %></li>
             <li><%= link_to 'Logout', destroy_user_session_path, method: :delete, data: {confirm: 'Are you sure?'} %></li>
-            <li class="avatar"><%= image_tag(current_user.avatar.url(:thumb), style: 'max-height: 60px;') %></li>
+            <li class="avatar"><%= image_tag(current_user.avatar.url(:thumb), style: 'max-height: 60px;', class: "img-circle") %></li>
         <% else %>
             <li class="nav-item  ">
               <%= link_to "Sign up", new_user_registration_path, :class => 'nav-link' %>
@@ -44,15 +48,3 @@
     </div>
   </div>
 </div>
-
-<script type="text/javascript" charset="utf-8">
-
-    $(function () {
-        $("li").click(function () {
-            // remove classes from all
-            $("li").removeClass("active");
-            // add class to the one we clicked
-            $(this).addClass("active");
-        });
-    });
-</script>

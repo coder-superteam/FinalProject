@@ -19,3 +19,4 @@
 //= require toastr_rails
 //= require_tree .
 //= require cable
+//= require dropzone

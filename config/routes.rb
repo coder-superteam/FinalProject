@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 	resources :rooms do
 		resources :messages
 	end
-
+  resources :media_contents, only: [:create]
   post 'create_vote' => 'votes#create'
   get 'question_format' => 'posts#question_format'
 	resources :posts do

@@ -13,12 +13,14 @@
         </div>
       </div>
       <div class="post-description">
-        <h3 style="color: black !important;">&ldquo;<%= post.title %>
-          <strong><%= post.body %></strong>&rdquo;</h3>
-        <h3>
+        <% if post.image.url.nil? %>
+          <h3 style="color: black !important;">&ldquo;<strong><%= post.body %></strong>&rdquo;</h3>
+        <% else %>
           <div>
-            <!--<img class="card-img-top" src="  post.image.url %>" style="max-width: 220px">-->
+            <img class="card-img-top" src="<%= post.image.url %>" style="max-width: 300px;">
           </div>
+        <% end %>
+        <h3>
           <div class="badge label-primary"> <%= pluralize(post.count_reply(post.id), 'reply') %>
           </div>
           <div class="badge label-info"> <%= pluralize(post.vote_number, 'vote') %>

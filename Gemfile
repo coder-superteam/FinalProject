@@ -74,3 +74,4 @@ gem 'sidekiq'
 gem 'lita'
 gem 'faker'
 gem 'dropzonejs-rails'
+

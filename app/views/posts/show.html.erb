@@ -54,6 +54,28 @@
           <h3>
             <div class="badge label-info"> <%= pluralize(@post.vote_number, 'vote') %> for this question</div>
           </h3>
+
+          
+        <span class="border-0">
+          <% @post.comments.each do |comment| %>
+            <%= render partial: 'comment', locals: {comment: comment} %>
+          <% end %>
+          <%= form_for [@post, @comment] do |f| %>
+            <% if @comment.errors.size > 0 %>
+              <div class="alert alert-danger">
+                <%= @comment.errors.full_messages.to_sentence %>
+              </div>
+            <% end %>
+            <div class="form-group">
+              <div>
+                <%= f.label :"Your comment" %>
+                <%= f.text_area :body, class: "form-control"%>
+              </div>
+            </div>
+            <%= f.submit "Post your comment", class: "btn btn-primary" %>
+          <% end %>
+        </span>
+        <!-- comment here -->
         </div>
       </div>
     </div>
@@ -65,8 +87,29 @@
       <h2>Don't have any reply yet</h2>
   <% else %>
       <h2><%= @post.replies.count() %> Replies </h2>
-      <% @post.replies.each do |reply| %>
+      <% @post.replies.sort { |a,b| b.vote_number <=> a.vote_number }.each do |reply| %>
           <%= render partial: 'reply', locals: {reply: reply} %>
+
+          <span class="border-0">
+            <% reply.comments.each do |comment| %>
+              <%= render partial: 'comment', locals: {comment: comment} %>
+            <% end %>
+            <%= form_for [reply, @comment] do |f| %>
+              <% if @comment.errors.size > 0 %>
+                <div class="alert alert-danger">
+                  <%= @comment.errors.full_messages.to_sentence %>
+                </div>
+              <% end %>
+              <div class="form-group">
+                <div>
+                  <%= f.label :"Your comment" %>
+                  <%= f.text_area :body, class: "form-control"%>
+                </div>
+              </div>
+              <%= f.submit "Post your comment", class: "btn btn-primary" %>
+            <% end %>
+          </span>
+
       <% end %>
   <% end %>
 </div>

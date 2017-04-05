@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments
 	resources :rooms do
 		resources :messages
 	end
@@ -8,7 +9,17 @@ Rails.application.routes.draw do
 	resources :posts do
   	resources :replies
   end
+
+  resources :replies do
+    resources :comments
+  end
+
+  resources :posts do
+    resources :comments
+  end
   get 'history' => 'posts#history'
+  post 'post_commends' => 'commends#create'
+  post 'reply_commends' => 'commends#create'
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   match "/users/:id/finish_signup", to: "users#finish_signup", via: [:get, :patch], as: :finish_signup

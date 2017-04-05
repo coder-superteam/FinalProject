@@ -2,6 +2,7 @@ class Post < ApplicationRecord
 	belongs_to :user
 	has_many :replies
 	has_many :votes
+	has_many :comments
 	validates :title, presence: true
 	validates_presence_of :body, :if => :dont_have_image?
 

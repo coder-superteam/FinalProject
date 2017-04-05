@@ -64,6 +64,7 @@ class PostsController < ApplicationController
       @voted = Post.voted(current_user.id, @post.id)
     end
     @reply = Reply.new
+    @comment = Comment.new
 
   end
 

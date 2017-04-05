@@ -21,7 +21,7 @@ class ImageAnalysingWorker
             description = labels.to_s
             logger.info(description)
             post.keywords = description
-            post.body = labels[0].gsub('"', '')
+            
             post.save!
 
             if labels.any? { |x| ["Text", "Label", "Brochure", "Flyer", "Poster"].include?(x) }

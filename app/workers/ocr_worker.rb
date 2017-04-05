@@ -17,7 +17,7 @@ class OcrWorker
                 result = resource.clean_convert url: post.image.url
                 # Put description
                 if !result.nil? && !post.keywords.nil?
-        		  post.keywords = post.keywords + '[' + result + "]" 
+        		  post.keywords = '[' + result + "]" 
                 end
         	# rescue
         	# 	result = 'Cannot convert to text'
@@ -29,7 +29,7 @@ class OcrWorker
             end
 
             post.save!
-            TranslateWorker.perform_async(post.id) if !post.body.blank?
+            TranslateWorker.perform_async(post.id) if !post.keywords.blank?
         end
     end
 end

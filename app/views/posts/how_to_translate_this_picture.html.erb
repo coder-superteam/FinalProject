@@ -1,0 +1,18 @@
+<%= form_for @post do |f| %>
+<h1><%= @post.title %></h1>
+<%= f.hidden_field :title %>
+<div class="box-shadow">
+      <% if @post.errors.size > 0 %>
+          <div class="alert alert-danger">
+            <%= @post.errors.full_messages.to_sentence %>
+          </div>
+      <% end %>
+      
+      <div class="form-group">
+        <%= f.label "Please pick a picture from your computer" %>
+        <%= f.file_field :image, id: "image-uploader" %>
+      </div>
+
+        <%= f.submit 'Ask', class: "btn btn-secondary text-right" %>
+</div>
+<% end %>

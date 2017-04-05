@@ -7,10 +7,18 @@ class TranslateWorker
 
   def perform(*args)
     post = Post.find(args[0].to_s)
-    if !post.nil? && !post.body.blank?
+    if !post.nil? && (!post.body.blank? || !post.keywords.blank?)
     	translate = Google::Apis::TranslateV2::TranslateService.new
-        translate.key = ENV.fetch('GG_API_KEY')
+      translate.key = ENV.fetch('GG_API_KEY')
+      if !post.body.blank?
         result = translate.list_translations(post.body, 'vi', source: 'en')
+      elsif !post.keywords.blank?
+        result = translate.list_translations(post.keywords.to_a[0].gsub('"', ''), 'vi', source: 'en')
+      else
+        result = ''
+      end
+
+      if !result.blank?
         logger.info(result.translations.first.translated_text)
 
         # Create a reply
@@ -20,6 +28,7 @@ class TranslateWorker
         @reply.vote_number = 0
 
         @reply.save
+      end
     end
   end
 end

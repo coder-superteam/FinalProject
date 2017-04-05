@@ -15,7 +15,7 @@
           <% end %>
         </li> -->
         <% if user_signed_in? %>
-            <li><%= link_to new_post_path do %>
+            <li><%= link_to question_format_path do %>
                   <i class="fa fa-question-circle" aria-hidden="true"></i> New question
               <% end %>
             </li>
@@ -23,10 +23,10 @@
                   <i class="fa fa-history" aria-hidden="true"></i> History
               <% end %>
             </li>
-            <li><%= link_to rooms_path do %>
+            <!-- <li><%= link_to rooms_path do %>
                   <i class="fa fa-comments" aria-hidden="true"> </i> Chat
               <% end %>
-            </li>
+            </li> -->
         <% end %>
       </ul>
 

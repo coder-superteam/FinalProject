@@ -49,25 +49,6 @@
         <h3>
           <div class="badge label-info"> <%= pluralize(reply.vote_number, 'vote') %> for this reply</div>
         </h3>
-        <span class="border-0">
-          <% reply.comments.each do |comment| %>
-            <%= render partial: 'comment', locals: {comment: comment} %>
-          <% end %>
-          <%= form_for [reply, @comment] do |f| %>
-            <% if @comment.errors.size > 0 %>
-              <div class="alert alert-danger">
-                <%= @comment.errors.full_messages.to_sentence %>
-              </div>
-            <% end %>
-            <div class="form-group">
-              <div>
-                <%= f.label :"Your comment" %>
-                <%= f.text_area :body, class: "form-control"%>
-              </div>
-            </div>
-            <%= f.submit "Post your comment", class: "btn btn-primary" %>
-          <% end %>
-        </span>
       </div>
     </div>
   </div>

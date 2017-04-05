@@ -16,7 +16,9 @@
           </div>
         </div>
         <div class="post-description">
-          <h3><%= @post.title %> <strong>&ldquo;<%= @post.body %>&rdquo;</strong></h3>
+          <h3><%= @post.title %> <% unless @post.body.blank? %>
+                <strong>&ldquo;<%= @post.body %>&rdquo;</strong>
+              <% end %></h3>
           <div>
             <img class="card-img-top" src=" <%= @post.image.url %>" style="max-width: 710px">
           </div>

@@ -20,16 +20,12 @@ class PostsController < ApplicationController
         session[:post] = nil
         @post.valid? # run validations to to populate the errors[]
       else
-        @post = Post.new title: params[:format]
-        puts case params[:format]
-        when 'How to translate this text?'
-            render 'how_to_translate_this_text'
-        when 'How to translate this picture?'
-            render 'how_to_translate_this_picture'
-        else
-            flash[:notice] = "Please select a valid question type"
-            render root_path
-        end
+        @post = Post.new title: 'Please help me translate: '
+        # if params[:format]
+        #   @post.title = params[:format]
+        # else
+        #   @post.title = 'Ask something else...'
+        # end
       end
     else
       flash[:notice] = "You need to login first!"
@@ -43,33 +39,17 @@ class PostsController < ApplicationController
       @post.language = 3
       @post.vote_number = 0
       @post.user_id = current_user.id
-
-    if @post.save
-        puts case @post.title
-        when 'How to translate this text?'
-            TranslateWorker.perform_async(@post.id)
-            
-        when 'How to translate this picture?'
-            ImageAnalysingWorker.perform_async(@post.id)
-            
+      if @post.save
+        if @post.image.url.nil?
+          TranslateWorker.perform_async(@post.id)
         else
-            flash[:notice] = "Please select a valid question type"
-            render root_path
+          ImageAnalysingWorker.perform_async(@post.id)
         end
-
         # Redirect to user's post
         redirect_to post_path (@post)
       else
         session[:post] = @post
-        puts case @post.title
-        when 'How to translate this text?'
-            render 'how_to_translate_this_text'
-        when 'How to translate this picture?'
-            render 'how_to_translate_this_picture'
-        else
-            flash[:notice] = "Please select a valid question type"
-            render root_path
-        end
+        render 'new'
       end
     else
       flash[:notice] = "You need to login first!"

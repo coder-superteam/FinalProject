@@ -84,7 +84,7 @@
   </div>
 </div>
 <!------------------------------------------------------------------ REPLY------------------------------------------------------------------>
-<div class="container">
+<div class="replies container">
   <% if @post.replies.count() <= 0 %>
       <h2>Don't have any reply yet</h2>
   <% else %>
@@ -110,6 +110,17 @@
       <%= f.submit "Post your answer", class: "btn btn-primary btn-block" %>
   <% end %>
 </div>
+
+<script type="text/javascript" charset="utf-8">
+  function reload () {
+    // window.location.reload()
+    $.get("<%= post_replies_path(@post) %>", function(response) {
+      $(".replies").html(response)
+    })
+  }
+
+  setInterval(reload, 5000)
+</script>
 
 
 

@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-sm-8">
+    <hr>
+    <div class="panel panel-white post panel-shadow" style="border: 1px solid orange">
+      <div class="post-heading">
+        <div class="pull-left image" style="margin-top: -5px">
+          <img src="<%= reply.user.avatar.url(:thumb) %>" class="img-circle avatar" alt="user profile image">
+        </div>
+        <div class="pull-left meta">
+          <div class="title">
+            <b class="text-black"><%= reply.user.name %></b> replied
+          </div>
+          <h6 class="text-muted time"><%= time_ago_in_words(reply.created_at) %> ago</h6>
+        </div>
+      </div>
+      <div class="post-description">
+        <h3>&ldquo;<%= reply.body %>&rdquo;</h3>
+        <% if current_user %>
+            <% if voted_for_reply(current_user.id, reply.id) == 0 %>
+                <%= link_to create_vote_path(:vote_type => 1, :vote_action => 1, :reply_id => reply.id, :post_id => @post.id), method: :post, class: 'btn btn-primary stat-item' do %>
+                    <i class="fa fa-thumbs-up icon"></i>
+                <% end %>
+                <%= link_to create_vote_path(:vote_type => 1, :vote_action => -1, :reply_id => reply.id, :post_id => @post.id), method: :post, class: 'btn btn-primary stat-item' do %>
+                    <i class="fa fa-thumbs-down icon"></i>
+                <% end %>
+            <% elsif voted_for_reply(current_user.id, reply.id) <= 0 %>
+                <%= link_to create_vote_path(:vote_type => 1, :vote_action => 1, :reply_id => reply.id, :post_id => @post.id), method: :post, class: 'btn btn-primary stat-item' do %>
+                    <i class="fa fa-thumbs-up icon"></i>
+                <% end %>
+                <%= link_to create_vote_path(:vote_type => 1, :vote_action => -1, :reply_id => reply.id, :post_id => @post.id), method: :post, class: 'btn btn-primary stat-item disabled' do %>
+                    <i class="fa fa-thumbs-down icon"></i>
+                <% end %>
+            <% else %>
+                <%= link_to create_vote_path(:vote_type => 1, :vote_action => 1, :reply_id => reply.id, :post_id => @post.id), method: :post, class: 'btn btn-primary stat-item disabled' do %>
+                    <i class="fa fa-thumbs-up icon"></i>
+                <% end %>
+                <%= link_to create_vote_path(:vote_type => 1, :vote_action => -1, :reply_id => reply.id, :post_id => @post.id), method: :post, class: 'btn btn-primary stat-item' do %>
+                    <i class="fa fa-thumbs-down icon"></i>
+                <% end %>
+            <% end %>
+        <% else %>
+            <%= link_to create_vote_path(:vote_type => 1, :vote_action => 1, :reply_id => reply.id, :post_id => @post.id), method: :post, class: 'btn btn-primary stat-item' do %>
+                <i class="fa fa-thumbs-up icon"></i>
+            <% end %>
+            <%= link_to create_vote_path(:vote_type => 1, :vote_action => -1, :reply_id => reply.id, :post_id => @post.id), method: :post, class: 'btn btn-primary stat-item' do %>
+                <i class="fa fa-thumbs-down icon"></i>
+            <% end %>
+        <% end %>
+        <h3>
+          <div class="badge label-info"> <%= pluralize(reply.vote_number, 'vote') %> for this reply</div>
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>

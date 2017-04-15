@@ -4,6 +4,12 @@ class RepliesController < ApplicationController
 	end
 
 	def index
+		@post = Post.find_by(id: params['post_id'])
+		@replies = @post.replies
+		
+		respond_to do |format|
+			format.html
+		end
 	end
 
 	def create
